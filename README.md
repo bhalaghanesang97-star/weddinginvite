@@ -1,14 +1,13 @@
-# Satyam & Poorva — Shiva–Parvati wedding invitation
+# Satyam & Poorva — combined wedding design
 
-Dates: 24–25 November 2026. Venue: JR Grand Resort, Agra.
-Map: https://maps.app.goo.gl/MMN9KoE7Zp3sWfke9
+Combines the full invitation, four dedicated function sections, story/gallery, RSVP and countdown structure inspired by crt25 with the river valley, Shiva–Parvati devotional artwork and blue/blush palette of crt22.
 
-Schedule: Haldi and Sangeet on 24 November, Wedding and Reception on 25 November, in that order. This division of the two dates is an implementation assumption; no function times were supplied, so all times say “Time to be announced”. Countdown targets the beginning of 25 November in Asia/Kolkata, not a confirmed ceremony time.
+24 November 2026: Haldi, Sangeet. 25 November 2026: Wedding, Reception.
+Venue: JR Grand Resort, Agra. Map: https://maps.app.goo.gl/MMN9KoE7Zp3sWfke9
+Times remain to be announced. The assignment of functions across the two dates is unchanged from the preceding version. Countdown targets the start of 25 November IST, not a confirmed ceremony time.
 
-Reference: https://craftyart.cloud/view/crt22, verified as the demo embedded in the supplied Crafty Art product page. Public artwork, layout and stylesheet were used to reconstruct the presentation. Names, sample parents and venue, date, monogram, function names and order were updated. Animation logic, local RSVP preview and accessible countdown interaction were implemented independently. Backend source was not recovered.
+The four illustrated functions have separate full sections and direct navigation links. The gallery uses devotional illustrations until the couple supplies personal photos. RSVP remains a browser-local preview with no recipient or backend configured. No WhatsApp number has been supplied.
 
-REA evidence: ev_2f357e132af04fa78763322458ea6760c5df2f8935ae962e610f03fe37d4bde6 records the controlled browser visit and DOM capture of the supplied product page. Browser inspection verified its iframe source and displayed layout. Runtime observation does not establish server implementation.
+Open dist/index.html or serve dist/ using a static HTTP server. No build required. Images and audio are local; fonts use Google Fonts with fallbacks.
 
-Open dist/index.html directly or serve dist with a static HTTP server. No build or dependencies needed. Image/audio files are local; fonts use Google Fonts with system fallbacks. Asset provenance: asset-sources.json.
-
-RSVP is a preview saved only on the visitor's device. No contact number was supplied, so no response is sent to anyone.
+References: https://craftyart.cloud/view/crt25 and https://craftyart.cloud/view/crt22. This revision reuses previously inspected artwork and combines the layout independently; it does not claim recovery of server-side services.

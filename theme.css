@@ -29,3 +29,6 @@ html{scroll-behavior:auto}
 }
 
 @media(max-width:750px){#haldi .event-image-wrap img{object-position:center 22%}}
+
+/* Fill the gallery arch with the couple photo. */
+.story-photo-slide button{padding:0}.story-photo-slide img{object-fit:cover;object-position:center 35%}

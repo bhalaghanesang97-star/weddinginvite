@@ -17,4 +17,15 @@ document.addEventListener('keydown',event=>{if(!modal)return;if(event.key==='Esc
 const target=Date.parse('2026-11-25T00:00:00+05:30');function tick(){let remaining=Math.max(0,Math.floor((target-Date.now())/1000));const values=[Math.floor(remaining/86400),Math.floor(remaining%86400/3600),Math.floor(remaining%3600/60),remaining%60];$$('.countdown-grid strong').forEach((el,i)=>el.textContent=String(values[i]).padStart(2,'0'));}tick();setInterval(tick,1000);
 let celebrating=false;$('.magic-btn').addEventListener('click',()=>{if(celebrating)return;celebrating=true;$('.countdown').classList.add('magic');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){const colors=['#df628e','#f4d99c','#dc304a','#f6a3b9','#ffe7ac'];for(let i=0;i<85;i++){const petal=document.createElement('i');petal.className='petal';petal.setAttribute('aria-hidden','true');petal.style.cssText=`--x:${Math.random()*100}vw;--drift:${Math.random()*240-120}px;--duration:${3+Math.random()*3}s;--delay:${Math.random()*1.5}s;--color:${colors[i%colors.length]}`;document.body.append(petal);petal.addEventListener('animationend',()=>petal.remove())}}setTimeout(()=>{$('.countdown').classList.remove('magic');celebrating=false},8000)});
 
-document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{const id=link.getAttribute('href').slice(1),target=document.getElementById(id);if(target){event.preventDefault();history.replaceState(null,'','#'+id);target.scrollIntoView({behavior:'instant',block:'start'});}}));
+document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{const id=link.getAttribute('href').slice(1),target=document.getElementById(id);if(target){event.preventDefault();history.replaceState(null,'','#'+id);(target.querySelector('.event-card')||target).scrollIntoView({behavior:'instant',block:'start'});}}));
+
+// Reveal content as it enters the viewport and let event cards recede on scroll.
+const motionReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!motionReduced){
+ const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target)}}),{threshold:.12});
+ document.querySelectorAll('.event-card').forEach(el=>revealObserver.observe(el));
+ document.querySelectorAll('.invitation-copy,.story-copy,.story-gallery,.rsvp-art,.rsvp-card,.countdown-inner').forEach(el=>{el.classList.add('motion-reveal');revealObserver.observe(el)});
+ let motionPending=false;
+ const updateMotion=()=>{motionPending=false;const cards=[...document.querySelectorAll('.event-card')];cards.forEach((card,i)=>{const next=cards[i+1],stickyTop=innerWidth<=750?80:95;const distance=next?next.getBoundingClientRect().top-stickyTop:1000;const progress=Math.max(0,Math.min(1,(innerHeight*.7-distance)/(innerHeight*.7)));card.style.transform=`scale(${1-progress*.055}) translateY(${-progress*12}px)`;card.style.opacity=String(1-progress*.25);card.style.pointerEvents=progress>.98?'none':''});};
+ addEventListener('scroll',()=>{if(!motionPending){motionPending=true;requestAnimationFrame(updateMotion)}},{passive:true});addEventListener('resize',updateMotion);updateMotion();
+}

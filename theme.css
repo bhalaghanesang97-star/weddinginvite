@@ -21,9 +21,9 @@ html{scroll-behavior:auto}
  .music-player{bottom:max(16px,env(safe-area-inset-bottom));right:12px}
 }
 
-/* Keep the complete portrait illustration visible in compact phone cards. */
+/* Keep faces at the top while cropping the lower part of phone illustrations. */
 @media(max-width:750px){
  .event-image-wrap{background:#f5eddf}
- .event-image-wrap img{object-fit:contain;object-position:center;transform:none}
+ .event-image-wrap img{object-fit:cover;object-position:center top;transform:none}
  .event-card.in-view .event-image-wrap img{transform:none}
 }

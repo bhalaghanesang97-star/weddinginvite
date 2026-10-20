@@ -27,3 +27,5 @@ html{scroll-behavior:auto}
  .event-image-wrap img{object-fit:cover;object-position:center top;transform:none}
  .event-card.in-view .event-image-wrap img{transform:none}
 }
+
+@media(max-width:750px){#haldi .event-image-wrap img{object-position:center 22%}}

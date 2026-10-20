@@ -26,6 +26,8 @@ let celebrating=false;$('.magic-btn').addEventListener('click',()=>{if(celebrati
 document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{const id=link.getAttribute('href').slice(1),target=document.getElementById(id);if(target){event.preventDefault();history.replaceState(null,'','#'+id);(target.querySelector('.event-card')||target).scrollIntoView({behavior:'instant',block:'start'});}}));
 
 // Reveal content as it enters the viewport and let event cards recede on scroll.
+function sizeEventCards(){const baseTop=innerWidth<=750?80:95;document.querySelectorAll('.event-card').forEach(card=>{const top=Math.min(baseTop,innerHeight-card.offsetHeight-24);card.style.setProperty('--event-sticky-top',top+'px')})}
+sizeEventCards();addEventListener('resize',sizeEventCards);addEventListener('load',sizeEventCards);document.fonts.ready.then(sizeEventCards);
 const motionReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!motionReduced){
  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target)}}),{threshold:.12});

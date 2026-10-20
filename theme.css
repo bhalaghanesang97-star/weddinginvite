@@ -4,3 +4,19 @@ html{scroll-behavior:auto}
 .hero-night{position:absolute;inset:0;z-index:-1;background:#183249 url(3bb76d94c773.webp) center 36%/cover no-repeat;opacity:0;animation:dayNightCycle 32s ease-in-out infinite}.hero-shade{z-index:0;pointer-events:none}.hero-copy{z-index:4}.hero-boat{animation:boatDrift 9s ease-in-out infinite;will-change:transform}.function-section{overflow:visible}.event-card{position:sticky;top:95px;transform-origin:50% 10%;will-change:transform,opacity;transition:box-shadow .3s;isolation:isolate}.function-section{min-height:1200px;padding-bottom:220px}.event-copy>*{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}.event-card.in-view .event-copy>*{opacity:1;transform:none}.event-card.in-view .event-copy>:nth-child(2){transition-delay:.1s}.event-card.in-view .event-copy>:nth-child(3){transition-delay:.18s}.event-card.in-view .event-copy>:nth-child(4){transition-delay:.25s}.event-card.in-view .event-copy>:nth-child(5){transition-delay:.32s}.event-card.in-view .event-copy>:nth-child(6){transition-delay:.4s}.event-image-wrap img{transform:scale(1.08);transition:transform 1.8s cubic-bezier(.2,.7,.2,1)}.event-card.in-view .event-image-wrap img{transform:scale(1)}.section-caption{position:relative;z-index:2}.next-section{position:relative;z-index:2}.motion-reveal{opacity:0;transform:translateY(35px);transition:opacity 1s,transform 1s cubic-bezier(.2,.7,.2,1)}.motion-reveal.in-view{opacity:1;transform:none}@keyframes dayNightCycle{0%,10%,100%{opacity:0}40%,65%{opacity:1}90%{opacity:0}}@keyframes boatDrift{0%,100%{transform:translateX(-50%) translateY(0) rotate(-1deg)}50%{transform:translateX(calc(-50% + 10px)) translateY(-13px) rotate(1deg)}}@media(max-width:750px){.hero-night{background-position:center 38%}.event-card{top:80px}.function-section{min-height:1350px;padding-bottom:250px}}@media(prefers-reduced-motion:reduce){.hero-night,.hero-boat{animation:none!important}.event-copy>*,.motion-reveal{opacity:1;transform:none;transition:none}.event-image-wrap img{transform:none}.event-card{transform:none!important}}
 /* One shared scroll stage allows each celebration to stack over the last. */
 .celebration-stack{position:relative;isolation:isolate;padding:70px max(6vw,20px) 140px;background:linear-gradient(160deg,#e3dce9,#c6dce9 40%,#eed8e3 75%,#d5e4ec)}.function-section{display:contents}.celebration-stack .section-caption{margin-bottom:25px}.celebration-stack .event-card{z-index:calc(10 + var(--stack-index));margin-bottom:20vh}.celebration-stack .next-section{display:block;margin:0 auto 90px}.celebration-stack .event-card:last-of-type{margin-bottom:20vh}@media(max-width:750px){.celebration-stack{padding:55px 18px 90px}.celebration-stack .event-card{margin-bottom:15vh}.celebration-stack .next-section{margin-bottom:80px}}
+
+/* Let tall cards scroll fully before they pin, including short mobile viewports. */
+.celebration-stack .event-card{top:var(--event-sticky-top,95px);background:#fffaf3}
+@media(max-width:750px){
+ .celebration-stack{padding-left:12px;padding-right:12px}
+ .celebration-stack .event-card{padding:12px;border-radius:85px 85px 10px 10px}
+ .event-image-wrap{height:clamp(160px,26svh,240px);border-radius:75px 75px 4px 4px}
+ .event-copy{padding:20px 10px 12px}
+ .event-copy .eyebrow{margin-bottom:9px}
+ .event-copy h2{font-size:38px;margin-bottom:10px}
+ .ornament{margin-bottom:12px}
+ .event-description{font-size:16px;line-height:1.45;margin-bottom:14px}
+ .event-copy dl{margin-bottom:16px}
+ .event-copy dl div{padding:9px 0;gap:10px}
+ .music-player{bottom:max(16px,env(safe-area-inset-bottom));right:12px}
+}

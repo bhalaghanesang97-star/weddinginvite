@@ -20,3 +20,10 @@ html{scroll-behavior:auto}
  .event-copy dl div{padding:9px 0;gap:10px}
  .music-player{bottom:max(16px,env(safe-area-inset-bottom));right:12px}
 }
+
+/* Keep the complete portrait illustration visible in compact phone cards. */
+@media(max-width:750px){
+ .event-image-wrap{background:#f5eddf}
+ .event-image-wrap img{object-fit:contain;object-position:center;transform:none}
+ .event-card.in-view .event-image-wrap img{transform:none}
+}

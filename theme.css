@@ -10,7 +10,7 @@ html{scroll-behavior:auto}
 @media(max-width:750px){
  .celebration-stack{padding-left:12px;padding-right:12px}
  .celebration-stack .event-card{padding:12px;border-radius:85px 85px 10px 10px}
- .event-image-wrap{height:clamp(160px,26svh,240px);border-radius:75px 75px 4px 4px}
+ .event-image-wrap{height:clamp(260px,36svh,320px);border-radius:75px 75px 4px 4px}
  .event-copy{padding:20px 10px 12px}
  .event-copy .eyebrow{margin-bottom:9px}
  .event-copy h2{font-size:38px;margin-bottom:10px}
